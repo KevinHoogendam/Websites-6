@@ -4,31 +4,25 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule }   from '@angular/router';
 
+import { CoreModule } from './core/core.module';
+import { GameModule } from './game/game.module';
+
 import { AppComponent } from './app.component';
-import { GameDetailComponent } from './game-detail/game-detail.component';
-import { GamesComponent }     from './games/games.component';
-import { GameService }     from './games/games.service';
+import { AppRoutes } from './routes/app.routes';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    GameDetailComponent,
-    GamesComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot([
-      {
-        path: 'games',
-        component: GamesComponent
-      }
-    ])
+    CoreModule,
+    GameModule,
+    RouterModule.forRoot(AppRoutes)
   ],
-  providers: [
-    GameService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

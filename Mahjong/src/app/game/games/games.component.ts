@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { Game } from './game';
+import { Game } from '../game';
 
-import { GameService } from './games.service';
+import { GameService } from '../game.service';
+import { EmitterService } from '../../emitter.service';
+
 
 @Component({
   selector: 'my-games',
   templateUrl: './games.html',
-  styleUrls: ['../app.component.css'],
+  styleUrls: ['../../app.component.css'],
   providers: [GameService]
 })
 export class GamesComponent {
@@ -18,12 +20,13 @@ export class GamesComponent {
   constructor(private gameService: GameService) { }
 
   getGames(): void{
-      this.gameService.getGames().then(games => this.games = games);
+      this.gameService.getGames().subscribe(games => this.games = games, err =>{console.log(err)});
   }
 
   ngOnInit(): void {
       this.getGames();
   }
+
 
   onSelect(game: Game): void {
     this.selectedGame = game;
