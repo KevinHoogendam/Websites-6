@@ -8,7 +8,7 @@ import { CoreModule } from './core/core.module';
 import { GameModule } from './game/game.module';
 
 import { AppComponent } from './app.component';
-import { AppRoutes } from './routes/app.routes';
+import { AppRoutes } from './app.routes';
 
 @NgModule({
   declarations: [
