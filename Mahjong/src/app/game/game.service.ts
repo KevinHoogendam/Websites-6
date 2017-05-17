@@ -20,17 +20,18 @@ export class GameService {
                          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     }
 
-    createGame(username: String, template: String, min: Number, max: Number): Observable<Game> {
-        let headers = new Headers({ 'Content-Type': 'application/json' });
+    createGame(username: string, template: string, min: Number, max: Number): Observable<Game> {
+        let headers = new Headers({ "Content-Type": 'application/json' });
+        headers.append("x-username", username);
+        headers.append("x-token", token);
         let options = new RequestOptions({ headers: headers });
-        let x-username = username;
-        let x-token = token;
-        let body: {
-            templateName = template,
-            minPlayers = min,
-            maxPlayers = max
-        };
-         return this.http.post('http://mahjongmayhem.herokuapp.com/games', body, {x-username, x-token}, options)
+
+        let body = JSON.stringify({
+            templateName: template,
+            minPlayers: min,
+            maxPlayers: max
+        });
+         return this.http.post('http://mahjongmayhem.herokuapp.com/games', body, options)
                          .map((res:Response) => res.json())
                          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     }
