@@ -11,11 +11,12 @@
     .games li {
       cursor: pointer;
       position: relative;
+      text-align: center;
       left: 0;
       background-color: #EEE;
       margin: .5em;
       padding: .3em 0;
-      height: 1.6em;
+      height: 5em;
       border-radius: 4px;
     }
     .games li.selected:hover {
@@ -34,8 +35,8 @@
     .games .badge {
       display: inline-block;
       font-size: small;
-      color: white;
-      padding: 0.8em 0.7em 0 0.7em;
+      color: black;
+      padding: 0.3em 0.7em 0 0.7em;
       line-height: 1em;
       position: relative;
       left: -1px;
@@ -43,14 +44,15 @@
       height: 1.8em;
       margin-right: .8em;
       border-radius: 4px 0 0 4px;
+      width: 100%;
     }
-    .games .badge span.playing {
-      background: blue;
+    .games span.playing {
+      background: #FFA1CD;
     }
 
-    .games .badge span.open {
-      background: green;
+    .games span.open {
+      background: #78F08E;
     }
-    .games .badge span.finished {
-     background: red; 
+    .games span.finished {
+     background: #A4A1FF; 
     }
