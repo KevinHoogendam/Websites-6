@@ -36,7 +36,6 @@
       font-size: small;
       color: white;
       padding: 0.8em 0.7em 0 0.7em;
-      background-color: #607D8B;
       line-height: 1em;
       position: relative;
       left: -1px;
@@ -44,4 +43,14 @@
       height: 1.8em;
       margin-right: .8em;
       border-radius: 4px 0 0 4px;
+    }
+    .games .badge span.playing {
+      background: blue;
+    }
+
+    .games .badge span.open {
+      background: green;
+    }
+    .games .badge span.finished {
+     background: red; 
     }
