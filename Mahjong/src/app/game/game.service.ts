@@ -25,14 +25,18 @@ export class GameService {
         headers.append("x-username", username);
         headers.append("x-token", token);
         let options = new RequestOptions({ headers: headers });
-
+        console.log("uitgevoerd");
         let body = JSON.stringify({
             templateName: template,
             minPlayers: min,
             maxPlayers: max
         });
          return this.http.post('http://mahjongmayhem.herokuapp.com/games', body, options)
-                         .map((res:Response) => res.json())
+                         .map(function(res){
+                             console.log(res.json());
+                         })
+                             
+                            
                          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     }
 }
