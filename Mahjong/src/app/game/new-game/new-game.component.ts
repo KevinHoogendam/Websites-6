@@ -19,9 +19,10 @@ export class NewGameComponent {
   maxPlayers: 32;
 
   constructor(private gameService: GameService) { }
-
+  onSubmit() { this.createGame(); }
   createGame(): void
   {
+    console.log("create");
     this.gameService.createGame(this.username, this.templateName, this.minPlayers, this.maxPlayers)
   }
 }
