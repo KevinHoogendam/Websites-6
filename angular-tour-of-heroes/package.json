@@ -1,5 +1,5 @@
 {
-  "name": "mahjong",
+  "name": "angular-tour-of-heroes",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -41,8 +41,6 @@
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
-    "typescript": "~2.2.0",
-    "jquery": "*",
-    "bootstrap": "*"
+    "typescript": "*"
   }
 }

@@ -13,5 +13,16 @@ import { EmitterService } from '../../emitter.service';
   providers: [GameService]
 })
 export class NewGameComponent {
-  title = 'Mahjong Games';
+  username: 'ag.blom@student.avans.nl';
+  templateName: "Shanghai";
+  minPlayers: 2;
+  maxPlayers: 32;
+
+  constructor(private gameService: GameService) { }
+  onSubmit() { this.createGame(); }
+  createGame(): void
+  {
+    console.log("create");
+    this.gameService.createGame(this.username, this.templateName, this.minPlayers, this.maxPlayers)
+  }
 }
