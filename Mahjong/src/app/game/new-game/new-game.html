@@ -1,9 +1,12 @@
 <div class="container">
     <h1>New Game</h1>
-    <form action="createGame()">
+  <form (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="template">Template</label>
-            <input type="text" class="form-control" id="template" required>
+            <select class="form-control" id="template" required>
+                <option *ngFor="let temp of templates" [value]="temp">{{temp}}</option>
+            </select>
+            
         </div>
         <div class="form-group">
             <label for="minplayers">Min # Players</label>

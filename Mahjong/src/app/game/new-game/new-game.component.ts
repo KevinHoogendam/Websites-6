@@ -17,12 +17,14 @@ export class NewGameComponent {
   templateName: "Shanghai";
   minPlayers: 2;
   maxPlayers: 32;
-
+  templates = ['Dragon', 'Monkey',
+            'Rooster', 'Snake', 'Ram'];
   constructor(private gameService: GameService) { }
-  onSubmit() { this.createGame(); }
+  
   createGame(): void
   {
     console.log("create");
     this.gameService.createGame(this.username, this.templateName, this.minPlayers, this.maxPlayers)
   }
+  onSubmit() { this.createGame(); }
 }
