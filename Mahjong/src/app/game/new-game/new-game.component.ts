@@ -13,18 +13,18 @@ import { EmitterService } from '../../emitter.service';
   providers: [GameService]
 })
 export class NewGameComponent {
-  username: 'ag.blom@student.avans.nl';
-  templateName: "Shanghai";
-  minPlayers: 2;
-  maxPlayers: 32;
+  model = new Game('Shanghai', 2, 32);
   templates = ['Dragon', 'Monkey',
-            'Rooster', 'Snake', 'Ram'];
+            'Rooster', 'Snake', 'Ram', 'Shanghai'];
+  
   constructor(private gameService: GameService) { }
   
   createGame(): void
   {
-    console.log("create");
-    this.gameService.createGame(this.username, this.templateName, this.minPlayers, this.maxPlayers)
+    console.log('test');
+    return;
+    //console.log("create");
+    //this.gameService.createGame(this.username, this.templateName, this.minPlayers, this.maxPlayers)
   }
   onSubmit() { this.createGame(); }
 }

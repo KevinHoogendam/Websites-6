@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 
+
 import { Game } from './game';
 import { GAMES } from './mock-games';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/toPromise';
 
 const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.ImFnLmJsb21Ac3R1ZGVudC5hdmFucy5ubCI.FU1bAOLS_nvSrvYG8v9yLh8yUv6EOHl85hKWSsPZEgU';
 
@@ -20,17 +22,12 @@ export class GameService {
                          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     }
 
-    createGame(username: string, template: string, min: Number, max: Number): Observable<Game> {
-        let headers = new Headers({ 'Content-Type': 'application/json', 'x-username': username, "x-token": token });
+    createGame(game: Game): Promise<Game> {
+        let headers = new Headers({ 'Content-Type': 'application/json', 'x-username': 'ag.blom@student.avans.nl', "x-token": token });
         let options = new RequestOptions({ headers: headers });
-        let newGame = {
-                        templateName: template,
-                        minPlayers: min,
-                        maxPlayers: max
-                      };
-        console.log('start');
-        return this.http.post('http://mahjongmayhem.herokuapp.com/games', JSON.stringify(newGame), options)
-                         .map(this.extractData)
+        return this.http.post('http://mahjongmayhem.herokuapp.com/games', game, options)
+                         .toPromise()
+                         .then(this.extractData)
                          .catch(this.handleError);
     }
 
