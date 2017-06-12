@@ -1,22 +1,24 @@
 export class Game {
+  constructor(templateName: string, minPlayers: number, maxPlayers: number){
+      this.gameTemplate = {_id: templateName, id: templateName};
+      this.minPlayers = minPlayers;
+      this.maxPlayers = maxPlayers;
+  }
+
   _id: string;
   createdBy: {
       _id: string;
       name: string;
-      __v: number;
     };
     createdOn: string;
     gameTemplate: {
       _id: string;
-      __v: number;
       id: string;
     };
-    __v: number;
     players: [
       {
         _id: string;
         name: string;
-        __v: number;
       }
     ];
     maxPlayers: number;

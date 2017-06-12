@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 
+
 import { Game } from './game';
 import { GAMES } from './mock-games';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/toPromise';
 
 const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.ImFnLmJsb21Ac3R1ZGVudC5hdmFucy5ubCI.FU1bAOLS_nvSrvYG8v9yLh8yUv6EOHl85hKWSsPZEgU';
 
@@ -20,23 +22,32 @@ export class GameService {
                          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     }
 
-    createGame(username: string, template: string, min: Number, max: Number): Observable<Game> {
-        let headers = new Headers({ "Content-Type": 'application/json' });
-        headers.append("x-username", username);
-        headers.append("x-token", token);
+    createGame(game: Game): Promise<Game> {
+        let headers = new Headers({ 'Content-Type': 'application/json', 'x-username': 'ag.blom@student.avans.nl', "x-token": token });
         let options = new RequestOptions({ headers: headers });
-        console.log("uitgevoerd");
-        let body = JSON.stringify({
-            templateName: template,
-            minPlayers: min,
-            maxPlayers: max
-        });
-         return this.http.post('http://mahjongmayhem.herokuapp.com/games', body, options)
-                         .map(function(res){
-                             console.log(res.json());
-                         })
-                             
-                            
-                         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+        return this.http.post('http://mahjongmayhem.herokuapp.com/games', game, options)
+                         .toPromise()
+                         .then(this.extractData)
+                         .catch(this.handleError);
     }
+
+    private extractData(res: Response) {
+        console.log('success');
+        let body = res.json();
+        return body.data || { };
+    }
+    private handleError (error: Response | any) {
+        console.log('fail');
+    // In a real world app, you might use a remote logging infrastructure
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
+    }
+    console.error(errMsg);
+    return Observable.throw(errMsg);
+  }
 }
