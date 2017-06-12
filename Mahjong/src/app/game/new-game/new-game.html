@@ -12,10 +12,8 @@
             <label for="minPlayers">Min # Players</label>
             <input type="text" class="form-control" id="minPlayers"
             required
-            [(ngModel)]="model.minPlayers" name="minPlayers">
-        </div>
-        <div [hidden]="!minPlayers.errors.maxlength">
-            Name cannot be more than 24 characters long.
+            [(ngModel)]="model.minPlayers" name="minPlayers"
+            #minPlayers="ngModel">
         </div>
         <div class="form-group">
             <label for="maxPlayers">Max # Players</label>
