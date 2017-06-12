@@ -3,7 +3,7 @@
   <form (ngSubmit)="createGame()" #gameForm="ngForm">
         <div class="form-group">
             <label for="template">Template</label>
-            <select class="form-control" id="templateName" [(ngModel)]="model.templateName" name="templateName">
+            <select class="form-control" id="templateName" [(ngModel)]="model.gameTemplate.id" name="templateName">
                 <option *ngFor="let temp of templates" [value]="temp">{{temp}}</option>
             </select>
             
@@ -13,6 +13,9 @@
             <input type="text" class="form-control" id="minPlayers"
             required
             [(ngModel)]="model.minPlayers" name="minPlayers">
+        </div>
+        <div [hidden]="!minPlayers.errors.maxlength">
+            Name cannot be more than 24 characters long.
         </div>
         <div class="form-group">
             <label for="maxPlayers">Max # Players</label>
