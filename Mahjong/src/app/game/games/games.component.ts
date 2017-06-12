@@ -16,6 +16,7 @@ export class GamesComponent {
   title = 'Mahjong Games';
   games: Game[];
   selectedGame: Game;
+  detailShow;
 
   constructor(private gameService: GameService) { }
 
@@ -29,5 +30,9 @@ export class GamesComponent {
 
 
   onSelect(game: Game): void {
-    this.selectedGame = game;
+    if(this.selectedGame === game){
+      this.selectedGame = undefined;
+    }else{
+      this.selectedGame = game;
+    }
   }}
