@@ -6,6 +6,7 @@ import { RouterModule }   from '@angular/router';
 
 import { CoreModule } from './core/core.module';
 import { GameModule } from './game/game.module';
+import { ProfileModule } from './profile/profile.module';
 
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
@@ -20,6 +21,7 @@ import { AppRoutes } from './app.routes';
     HttpModule,
     CoreModule,
     GameModule,
+    ProfileModule,
     RouterModule.forRoot(AppRoutes)
   ],
   providers: [],

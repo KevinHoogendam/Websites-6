@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -29,11 +29,11 @@ export const gameRouting = RouterModule.forChild(gameRoutes);
     NewGameComponent
   ],
   imports: [
-      BrowserModule,
+      CommonModule,
       FormsModule,
       HttpModule,
       gameRouting
   ],
-  providers: [GameService],
+  providers: [GameService]
 })
 export class GameModule { }
