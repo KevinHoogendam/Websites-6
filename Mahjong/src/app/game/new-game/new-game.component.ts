@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { Game } from '../game';
 
@@ -13,16 +14,20 @@ import { EmitterService } from '../../emitter.service';
   providers: [GameService]
 })
 export class NewGameComponent {
-  username: 'ag.blom@student.avans.nl';
-  templateName: "Shanghai";
-  minPlayers: 2;
-  maxPlayers: 32;
-
+  templates = ['Shanghai', 'Dragon', 'Monkey',
+            'Rooster', 'Snake', 'Ram'];
+  model = new Game('Shanghai', 2, 32);
+  
   constructor(private gameService: GameService) { }
-  onSubmit() { this.createGame(); }
+  
   createGame(): void
   {
-    console.log("create");
-    this.gameService.createGame(this.username, this.templateName, this.minPlayers, this.maxPlayers)
+    let game = {
+                  'templateName': this.model.gameTemplate.id,
+                  'minPlayers': this.model.minPlayers,
+                  'maxPlayers': this.model.maxPlayers
+              };
+    console.log(game);
+    //this.gameService.createGame(game);
   }
 }

@@ -6,20 +6,16 @@ export const GAMES: Game[] = [
     "createdBy": {
       "_id": "ag.blom@student.avans.nl",
       "name": "Alec Blom",
-      "__v": 0
     },
     "createdOn": "2017-05-04T16:29:20.102Z",
     "gameTemplate": {
       "_id": "Shanghai",
-      "__v": 0,
       "id": "Shanghai"
     },
-    "__v": 0,
     "players": [
       {
         "_id": "ag.blom@student.avans.nl",
-        "name": "Alec Blom",
-        "__v": 0
+        "name": "Alec Blom"
       }
     ],
     "maxPlayers": 32,
@@ -31,21 +27,17 @@ export const GAMES: Game[] = [
     "_id": "590b396d2b13cf00114afba2",
     "createdBy": {
       "_id": "raa.guerand@student.avans.nl",
-      "name": "Roel Guerand",
-      "__v": 0
+      "name": "Roel Guerand"
     },
     "createdOn": "2017-05-04T14:23:41.872Z",
     "gameTemplate": {
       "_id": "Ram",
-      "__v": 0,
       "id": "Ram"
     },
-    "__v": 0,
     "players": [
       {
         "_id": "raa.guerand@student.avans.nl",
-        "name": "Roel Guerand",
-        "__v": 0
+        "name": "Roel Guerand"
       }
     ],
     "maxPlayers": 13,
